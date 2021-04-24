@@ -1,0 +1,18 @@
+from stegano import lsb
+
+secret = lsb.hide("target_file", "message")
+secret.save("secret_file")
+
+result = lsb.reveal("secret_file")
+print(result)
+
+
+
+
+from stegano import exifHeader
+
+secret = exifHeader.hide("target_file", "secret_file", "message")
+
+result = exifHeader.reveal("secret_file")
+result = result.decode()
+print(result)
